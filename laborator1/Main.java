@@ -110,13 +110,10 @@ public class Main {
         n = (int) (Math.random() * 1_000_000);
 
         n*=3;
-        String binary="10101";
-        int decimal=Integer.parseInt(binary,2);
-        n+=decimal;
-
-        String hex="FF";
-        decimal=Integer.parseInt(hex,16);
-        n+=decimal;
+        int binary=0b101010;
+        n+=binary;
+        int hex=0xFF;
+        n+=hex;
 
         n*=6;
         int result=0;
