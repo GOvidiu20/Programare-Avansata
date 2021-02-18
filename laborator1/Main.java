@@ -13,7 +13,8 @@ public class Main {
             }
     }
     public static void afisare(int[][] array,int n){
-        int i,j;
+        int i;
+        int j;
         for(i=0;i<n;i++) {
             for (j = 0; j < n; j++)
                 System.out.print(array[i][j]+" ");
