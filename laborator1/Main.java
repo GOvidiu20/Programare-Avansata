@@ -12,12 +12,15 @@ public class Main {
                 array[j][i] = array[i][j];
             }
     }
-    public static void afisare(int[][] array,int n){
+    public static void afisare(int[][] array,int n,int x){
         int i;
         int j;
         for(i=0;i<n;i++) {
             for (j = 0; j < n; j++)
-                System.out.print(array[i][j]+" ");
+                if(array[i][j]==x)
+                    System.out.print(array[i][j]+" ");
+                else
+                    System.out.print(0+" ");
             System.out.println();
         }
     }
@@ -67,19 +70,18 @@ public class Main {
         p=0;u=0;
         c[p]=x;
         vizitat[x]=1;
-        int[][] matriceAdiacenta=new int[n][n];
         while(p<=u){
             x=c[p++];
             for(i=0;i<n;i++)
                 if(array[x][i]==1 && vizitat[i]==0){
                     c[++u]=i;
-                    matriceAdiacenta[x][i]=1;
-                    matriceAdiacenta[i][x]=1;
+                    array[x][i]=2;
+                    array[i][x]=2;
                     vizitat[i]=1;
                 }
         }
         System.out.println("arbore Partial:");
-        afisare(matriceAdiacenta,n);
+        afisare(array,n,2);
     }
     public static int x=0,maxim=0;
        public static void arbore(int level){
@@ -141,7 +143,7 @@ public class Main {
         else{
             int[][] matrice=new int[m][m];
             matrix(matrice,m);
-            afisare(matrice,m);
+            afisare(matrice,m,1);
             for(i=0;i<n;i++)
                 viz[i]=0;
             int ok=isConnected(matrice,m);
