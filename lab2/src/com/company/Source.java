@@ -1,16 +1,13 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Source {
     private sourceTypes type;
     private String name;
-    private int supply;
-    static public int[] Sources=new int[10];
-    static public int numberSources=0;
-    public Source(sourceTypes type, String name, int supply) {
+    public Source(sourceTypes type, String name) {
         this.type = type;
         this.name = name;
-        this.supply = supply;
-        Sources[numberSources++]=supply;
     }
 
     public sourceTypes getType() {
@@ -25,21 +22,28 @@ public class Source {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws IllegalAccessException {
+        if(name==null)
+            throw new IllegalAccessException("Null?");
         this.name = name;
-    }
-
-    public int getSupply() {
-        return supply;
-    }
-
-    public void setSupply(int supply) {
-        this.supply = supply;
     }
 
     @Override
     public String toString(){
-        String s= "Name:" + this.name + " Type:" + this.type + " Supply:" +this.supply;
+        String s= "Name:" + this.name + " Type:" + this.type;
         return s;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Source source = (Source) o;
+        return type == source.type && Objects.equals(name, source.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, name);
     }
 }
