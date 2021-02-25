@@ -1,44 +1,69 @@
 package com.company;
 import java.lang.Math;
+import java.util.Arrays;
+
 public class Problem {
-    private int[][] matrix;
-    private int n,m;
-    public Problem(int n,int m) {
-        matrix = new int[n+1][m+1];
-        this.n=n+1;
-        this.m=m+1;
+    private Source[] sources;
+    private Destination[] destinations;
+
+    private int supply[];
+    private int demand[];
+    private int cost[][];
+
+    public Source[] getSources() {
+        return sources;
     }
-    public void buildMatrix(int[]x,int[]y){
+
+    public void setSources(Source[] sources) {
+        this.sources = sources;
+    }
+
+    public Destination[] getDestinations() {
+        return destinations;
+    }
+
+    public void setDestinations(Destination[] destinations) {
+        this.destinations = destinations;
+    }
+
+    public int[] getSupply() {
+        return supply;
+    }
+
+    public void setSupply(int[] supply) {
+        this.supply = supply;
+    }
+
+    public int[] getDemand() {
+        return demand;
+    }
+
+    public void setDemand(int[] demandp) {
+        this.demand = demandp;
+    }
+
+    public int[][] getCost() {
+        return cost;
+    }
+
+    public void setCost(int[][] cost) {
+        this.cost = cost;
+    }
+    public void afisareCost(){
         int i,j;
-        for(i=0;i<n-1;i++)
-            for(j=0;j<n-1;j++) {
-                double rand = Math.random();
-                matrix[i][j] = (int) (rand * 9 +1);
-            }
-        for(i=0;i<n-1;i++){
-            matrix[n-1][i]=y[i];
-            matrix[i][m-1]=x[i];
-        }
-    }
-    public void afisareMatrix() {
-        int i, j;
-        for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++)
-                System.out.print(matrix[i][j] + " ");
+        for(i=0;i< supply.length;i++) {
+            for (j = 0; j < supply.length; j++)
+                System.out.print(cost[i][j]);
             System.out.println();
         }
     }
-    private static int big()
-    public void rezolvare(){
-        int ok=1,i,j;
-        while(ok==1){
-            for(i=0;i<n-1;i++)
-                if(matrix[i][m-1]!=0){
-                    for(j=0;j<m-1;j++)
-                        if(matrix[n-1][j]!=0){
-
-                        }
-                }
-        }
+    @Override
+    public String toString() {
+        return "Problem{" +
+                "sources=" + Arrays.toString(sources) +
+                ", destinations=" + Arrays.toString(destinations) +
+                ", supply=" + Arrays.toString(supply) +
+                ", demand=" + Arrays.toString(demand) +
+                '}';
     }
 }
