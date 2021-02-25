@@ -1,14 +1,11 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Destination {
     private String name;
-    private int demand;
-    static public int[] Destinations=new int[10];
-    static public int numberDestinations=0;
-    public Destination(String name, int demand) {
+    public Destination(String name) {
         this.name = name;
-        this.demand = demand;
-        Destinations[numberDestinations++]=demand;
     }
 
     public String getName() {
@@ -19,17 +16,22 @@ public class Destination {
         this.name = name;
     }
 
-    public int getDemand() {
-        return demand;
-    }
-
-    public void setDemand(int demand) {
-        this.demand = demand;
+    @Override
+    public String toString() {
+        String s="Name:" + this.name;
+        return s;
     }
 
     @Override
-    public String toString() {
-        String s="Name:" + this.name + " Demand:" + this.demand;
-        return s;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Destination that = (Destination) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
