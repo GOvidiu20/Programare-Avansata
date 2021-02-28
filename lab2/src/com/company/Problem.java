@@ -207,7 +207,7 @@ public class Problem {
         makeCostMaxim(); //gasim costul maxim in matricea de costuri
         int costul=0;
         int ok=1;
-        int n,m,i,j,linie=0,coloana=0;
+        int n,m,i,j;
         n= supply.length;
         m= demand.length;
         while(ok==1){
@@ -217,13 +217,13 @@ public class Problem {
             int maximLinii=maximumValueArray(arrayLine);      // cautam cea mai mare diferenta de pe fiecare linie
             int maximColoana=maximumValueArray(arrayColumn);  // coloana
             if(maximLinii>maximColoana) {                     // luam cea mai mare diferenta intre costuro de pe linie/coloana
+                int linie=0,coloana=0;
                 for (i = 0; i < arrayLine.length; i++)        // cautam linia si coloana pe care se afla cel mai mic cost de pe linii/coloane
                     if (maximLinii == arrayLine[i]) {
                         linie = i;
                         break;
                     }
                 int minim=cost[linie][0];
-                coloana=0;
                 for(i=1;i<m;i++)
                     if(cost[linie][i]<minim){
                         minim=cost[linie][i];
@@ -254,13 +254,13 @@ public class Problem {
                     }
             }
             else{
+                int linie=0,coloana=0
                 for (i = 0; i < arrayColumn.length; i++)
                     if (maximColoana == arrayColumn[i]) {
                         coloana = i;
                         break;
                     }
                 int minim=cost[0][coloana];
-                linie=0;
                 for(i=1;i<n;i++)
                     if(cost[i][coloana]<minim){
                         minim=cost[i][coloana];
