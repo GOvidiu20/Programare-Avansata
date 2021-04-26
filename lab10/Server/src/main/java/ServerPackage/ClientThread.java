@@ -22,7 +22,9 @@ class ClientThread extends Thread {
                 String raspuns;
                 if(request.equals("stop")) {
                     raspuns = "Server stopped!";
-                    ok=Boolean.FALSE;
+                    out.println(raspuns);
+                    out.flush();
+                    System.exit(1);
                 }
                 if(request.equals("exit")){
                     raspuns = "Connection stopped!";
