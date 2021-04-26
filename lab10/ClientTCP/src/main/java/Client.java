@@ -14,7 +14,7 @@ public class Client {
                 Socket socket = new Socket(serverAddress, PORT);
                 PrintWriter out =
                         new PrintWriter(socket.getOutputStream(), true);) {
-            // Send a request to the server
+
             Scanner scanner=new Scanner(System.in);
             while(true) {
                 BufferedReader in = new BufferedReader (
@@ -22,7 +22,7 @@ public class Client {
                 System.out.println("Read a command: ");
                 String request = scanner.nextLine();
                 out.println(request);
-                // Wait the response from the server ("Hello World!")
+
                 String response = in.readLine();
                 System.out.println(response);
                 if(request.equals("exit") || request.equals("stop"))
