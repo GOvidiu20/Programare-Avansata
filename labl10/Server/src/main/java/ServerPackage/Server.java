@@ -9,9 +9,10 @@ public class Server {
     public static final int PORT = 8100;
     public Server() throws IOException {
         ServerSocket serverSocket = null ;
+        Boolean running=true;
         try {
             serverSocket = new ServerSocket(PORT);
-            while (true) {
+            while (running) {
                 System.out.println ("Waiting for a client ...");
                 Socket socket = serverSocket.accept();
                 // Execute the client's request in a new thread
